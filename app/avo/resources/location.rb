@@ -1,5 +1,4 @@
-class Avo::Resources::User < Avo::BaseResource
-  self.title = :id
+class Avo::Resources::Location < Avo::BaseResource
   self.includes = []
   # self.search = {
   #   query: -> { query.ransack(id_eq: params[:q], m: "or").result(distinct: false) }
@@ -7,9 +6,9 @@ class Avo::Resources::User < Avo::BaseResource
 
   def fields
     field :id, as: :id
-    field :email, as: :gravatar
     field :name, as: :text
-    field :email, as: :text
-    field :password, as: :text
+    field :description, as: :textarea
+    field :photo, as: :file, is_image: true
+    field :rooms, as: :has_many
   end
 end
